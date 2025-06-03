@@ -1,11 +1,14 @@
 package com.auth0.example;
 
 import com.auth0.AuthenticationController;
+import com.auth0.jwk.GuavaCachedJwkProvider;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwk.JwkProviderBuilder;
-
-import javax.servlet.ServletConfig;
+import com.auth0.jwk.UrlJwkProvider;
+import jakarta.servlet.ServletConfig;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * A class that manages a singleton instance of a {@link JwkProvider} and {@link AuthenticationController} to be used
