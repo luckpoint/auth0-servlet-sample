@@ -37,6 +37,8 @@ public class LoginServlet extends HttpServlet {
         redirectUri += "/callback";
 
         String authorizeUrl = authenticationController.buildAuthorizeUrl(req, res, redirectUri)
+                .withAudience("https://sample-api.com/")
+                .withScope("openid email")
                 .build();
         res.sendRedirect(authorizeUrl);
     }

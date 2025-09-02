@@ -27,8 +27,68 @@
         <h3 class="text-muted">App.com</h3>
     </div>
     <div class="jumbotron">
-        <h3>Hello ${userId}!</h3>
+        <h3>Hello ${userProfile.email}!</h3>
+        <c:if test="${not empty userProfile}">
+            <p>Welcome back!</p>
+        </c:if>
+        <c:if test="${not empty tokenError}">
+            <div class="alert alert-warning" role="alert">
+                <strong>Token Error:</strong> ${tokenError}
+            </div>
+        </c:if>
     </div>
+    
+    <!-- User Profile Section -->
+    <c:if test="${not empty userProfile}">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Profile Information</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <c:if test="${not empty userProfile.picture}">
+                        <div class="col-md-3">
+                            <img src="${userProfile.picture}" alt="Profile Picture" class="img-thumbnail" style="max-width: 150px;">
+                        </div>
+                        </c:if>
+                        <div class="col-md-9">
+                            <table class="table table-striped">
+                                <c:if test="${not empty userProfile.name}">
+                                <tr>
+                                    <td><strong>Full Name:</strong></td>
+                                    <td>${userProfile.name}</td>
+                                </tr>
+                                </c:if>
+                                <c:if test="${not empty userProfile.email}">
+                                <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td>
+                                        ${userProfile.email}
+                                        <c:if test="${userProfile.email_verified}">
+                                            <span class="label label-success">Verified</span>
+                                        </c:if>
+                                        <c:if test="${not userProfile.email_verified}">
+                                            <span class="label label-warning">Not Verified</span>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                </c:if>
+                                <c:if test="${not empty userProfile.sub}">
+                                <tr>
+                                    <td><strong>User ID:</strong></td>
+                                    <td><code>${userProfile.sub}</code></td>
+                                </tr>
+                                </c:if>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </c:if>
     <div class="row marketing">
         <div class="col-lg-6">
             <h4>Subheading</h4>

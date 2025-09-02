@@ -19,10 +19,19 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.auth0:mvc-auth-commons:1.12.0-jakarta'
+    implementation files('libs/com/auth0/mvc-auth-commons/1.12.0-jakarta/mvc-auth-commons-1.12.0-jakarta.jar')
+    implementation 'com.auth0:auth0:1.45.1'
+    implementation 'com.auth0:java-jwt:3.19.4'
+    implementation 'com.auth0:jwks-rsa:0.22.1'
+
     compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.google.guava:guava-annotations:r03'
+    implementation 'commons-codec:commons-codec:1.15'
+
 }
 
 gretty {
